@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pegga Week作業-JavaScript</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//題目一：在函式中​使用迴圈​計算最小值到最大值之間，所有整數的總和。
+		function calculate(min,max){
+			var sum = 0;
+			for(var i=min; i<=max; i++){
+				sum += i;
+			}
+			console.log(sum);
+		}
+		calculate(1,3);
+		calculate(4,8);
+
+		//題目二：完成以下函式，正確計算出員工的平均薪資，請考慮員工數量會變動的情況。
+		function avg(data){
+			var count = data.count;
+			var sum = 0;
+			for(var i=0; i<count; i++){
+				sum += data.employees[i].salary;
+			}
+			console.log(sum/count);
+		}
+		avg({
+			"count":3,
+			"employees":[
+				{
+					"name":"John",
+					"salary":30000
+				},
+				{
+					"name":"Bob",
+					"salary":60000
+				},
+				{
+					"name":"Jenny",
+					"salary":50000
+				}
+			]
+		});
+
+
+		//題目三：找出至少包含兩筆整數的列表 (Python) 或陣列 (JavaScript) 中，兩兩數字相乘後的最大值。
+		function maxProduct(nums){
+			var multiplicate = [];
+			var q = 0;
+			var t = 0;
+			for(i=0; i<nums.length-1; i++){
+				for(j=i+1; j<nums.length; j++){
+					multiplicate[q] = nums[i]*nums[j];
+					q++
+				}
+			}
+			for(k=0; k<multiplicate.length; k++){
+				if(t < multiplicate[k]){
+					t = multiplicate[k]
+				}
+			}
+			console.log(t);
+		};
+		maxProduct([5,20,2,6]);
+		maxProduct([10,-20,0,3]);
+
+		//題目四：Given an array of integers, show indices of the two numbers such that they add up to a specific target. You can assume that each input would have exactly one solution, and you can not use the same element twice.
+		function twoSum(nums, target){
+			for(i=0; i<nums.length-1; i++){
+				for(j=1; j<nums.length; j++){
+					var sum = nums[i] + nums[j];
+					if(sum == target){
+						return [i,j];
+					}
+				}
+			}
+		}
+		var result = twoSum([2,11,7,15],9);
+		console.log(result);
+
+		//題目五：給定只會包含 0 或 1 兩種數字的列表 (Python) 或陣列 (JavaScript)，計算連續出現 0 的最大長度。
+		function maxZeros(nums){
+			var count = 0;
+			var zero = [];
+			var q = 0;
+			for(i=0; i<nums.length; i++){
+				if(nums[i] == 0){
+					count++;
+					if(i == nums.length-1){
+						zero[q] = count;
+					}
+				}else{
+					zero[q] = count;
+					q++;
+					count = 0;
+				}
+			}
+			var maxZero = 0;
+			for(i=0; i<zero.length; i++){
+				if(maxZero < zero[i]){
+					maxZero = zero[i];
+				}
+			}
+			console.log(maxZero);
+		}
+		maxZeros([0, 1, 0, 0]);
+		maxZeros([1, 0, 0, 0, 0, 1, 0, 1, 0, 0]);
+		maxZeros([1, 1, 1, 1, 1]);
+	</script>
+</body>
+</html>
