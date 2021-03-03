@@ -37,14 +37,14 @@ avg({
 #題目三：找出至少包含兩筆整數的列表 (Python) 或陣列 (JavaScript) 中，兩兩數字相乘後的最大值。
 def maxProduct(nums):
 	result = []
-	for x in range(len(nums)-1):
-		for y in range(x+1,len(nums)):
-			result += [nums[x]*nums[y]]
-	t = 0
-	for n in range(len(result)):
-		if t < result[n]:
-			t = result[n]
-	print(t)
+	if len(nums) == 2:
+		print(nums[0]*nums[1])
+	else:
+		for x in range(len(nums)-1):
+			for y in range(x+1,len(nums)):
+				result += [nums[x]*nums[y]]
+		result.sort(reverse=True)
+		print(result[0])
 
 maxProduct([5,20,2,6])
 maxProduct([10,-20,0,3])
