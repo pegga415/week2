@@ -50,16 +50,20 @@
 		function maxProduct(nums){
 			var multiplicate = [];
 			var q = 0;
-			var t = 0;
+			var t = [];
 			for(i=0; i<nums.length-1; i++){
 				for(j=i+1; j<nums.length; j++){
 					multiplicate[q] = nums[i]*nums[j];
 					q++
 				}
 			}
-			for(k=0; k<multiplicate.length; k++){
-				if(t < multiplicate[k]){
-					t = multiplicate[k]
+			if(multiplicate.length == 1){
+				t = multiplicate[0];
+			}else{
+				for(k=0; k<multiplicate.length-1; k++){
+					if(multiplicate[k] > t){
+						t = multiplicate[k]
+					}
 				}
 			}
 			console.log(t);
